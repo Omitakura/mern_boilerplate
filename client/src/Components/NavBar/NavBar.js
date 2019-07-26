@@ -8,9 +8,9 @@ function NavBar() {
     <div className="navBar">
       <Navbar expand="lg" variant="light" bg="light">
         <div className="hvr-icon-fade">
-          <Navbar.Brand href="#login" className="hvr-icon hvr-skew-forward">Sign Up/Login</Navbar.Brand>
+          <Navbar.Brand href="/api/v1/auth/google" className="hvr-icon hvr-skew-forward">Sign Up/Login</Navbar.Brand>
         </div>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" aria-expanded="false" className="green-hover"/>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" aria-expanded="false" className="green-hover" />
         <Navbar.Collapse className="justify-content-end" id="navLinks">
           <Nav>
             <Nav.Link className="hvr-grow hvr-icon-fade" href="/trending" id="navCont">
