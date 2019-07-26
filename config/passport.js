@@ -1,24 +1,27 @@
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
-// Telling passport we want to use a Local Strategy.
-// In other words, we want login with a username/email and password
-passport.use(new LocalStrategy(
-  // Our user will sign in using an email, rather than a 'username'
+// Use the GoogleStrategy within Passport.
+//   Strategies in Passport require a `verify` function, which accept
+//   credentials (in this case, an accessToken, refreshToken, and Google
+//   profile), and invoke a callback with a user object.
+// if env. is dev. then callbackURL = devURL,
+// else the callbackURL = herokuURL
+passport.use(new GoogleStrategy(
   {
-    usernameField: 'email',
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: 'http://localhost:3001/auth/google/callback',
+    // callbackURL: "https://sprout-heroku.herokuapp.com/auth/google/callback" || "http://sprout.com:8080/auth/google/callback" || "http://localhost:3001/auth/google/callback"
   },
-  async (email, password, done) => {
+  (accessToken, refreshToken, profile, done) => {
+    const user = {
+      email: profile.emails[0].value,
+      name: profile.displayName,
+      token: accessToken,
+    };
 
-    // When a user tries to sign in this code runs
-
-    // Login failed
-    return done(null, false, {
-      message: 'Invalid user details',
-    });
-
-    // Login success
-    return done(null, user);
+    done(null, user);
   },
 ));
 

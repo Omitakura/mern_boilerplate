@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS sprout_db;
+CREATE DATABASE sprout_db;

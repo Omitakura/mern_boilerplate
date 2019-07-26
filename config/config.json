@@ -1,36 +1,21 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "dev",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "define": {
-      "charset": "utf8",
-      "timestamps": true,
-      "underscored": true
-    }
+    "password": "",
+    "database": "sprout_db",
+    "host": "localhost",
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "test",
-    "host": "127.0.0.1",
+    "database": "testdb",
+    "host": "localhost",
     "dialect": "mysql",
-    "define": {
-      "charset": "utf8",
-      "timestamps": true,
-      "underscored": true
-    }
+    "logging": false
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql",
-    "define": {
-      "charset": "utf8",
-      "timestamps": true,
-      "underscored": true
-    },
-    "logging": false
+    "dialect": "mysql"
   }
 }
